@@ -1,0 +1,29 @@
+eureka:
+  client:
+    fetchRegistry: true
+    registerWithEureka: true
+    service-url:
+      defaultZone: http://localhost:8081/eureka
+  instance:
+    hostname: localhost
+server:
+  port: 8082
+spring:
+  application:
+    name: category-service
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    password: Vutientrung96
+    url: jdbc:mysql://localhost:3306/database
+    username: root
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL57InnoDBDialect
+        format_sql: true
+    show-sql: true
+  mvc:
+    path match:
+      matching-strategy: ANT_PATH_MATCHER
