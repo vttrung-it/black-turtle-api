@@ -1,9 +1,8 @@
-package com.java.domain.entity;
+package com.java.domain.base;
 
 public class BaseResponse<T> {
     private String code;
     private String message;
-    private String warningCode;
     private T data;
 
     public BaseResponse() {
@@ -23,14 +22,6 @@ public class BaseResponse<T> {
 
     public void setMessage(String message) {
         this.message = message;
-    }
-
-    public String getWarningCode() {
-        return warningCode;
-    }
-
-    public void setWarningCode(String warningCode) {
-        this.warningCode = warningCode;
     }
 
     public T getData() {

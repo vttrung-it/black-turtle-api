@@ -35,12 +35,6 @@ CREATE TABLE `black-turtle-api`.`category_link` (
                                                     `description` VARCHAR(45) NOT NULL,
                                                     PRIMARY KEY (`id`));
 
--- role
-CREATE TABLE `black-turtle-api`.`role` (
-                                           `id` INT NOT NULL,
-                                           `role_name` VARCHAR(45) NOT NULL,
-                                           PRIMARY KEY (`id`));
-
 -- add role in table user and foreign key table role
 ALTER TABLE `black-turtle-api`.`user`
     ADD COLUMN `role_name` VARCHAR(45) NOT NULL AFTER `address`;
