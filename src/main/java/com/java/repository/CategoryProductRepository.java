@@ -10,4 +10,7 @@ public interface CategoryProductRepository extends JpaRepository<CategoryProduct
 
     @Query(value = "SELECT * FROM category_product WHERE id=?1", nativeQuery = true)
     CategoryProduct findByID(Long id);
+
+    @Query(value = "SELECT * FROM category_product WHERE code=?1", nativeQuery = true)
+    CategoryProduct findByCode(String code);
 }

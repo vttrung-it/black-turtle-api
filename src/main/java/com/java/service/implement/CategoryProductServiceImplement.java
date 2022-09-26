@@ -33,6 +33,11 @@ public class CategoryProductServiceImplement implements CategoryProductService {
     }
 
     @Override
+    public CategoryProductDTO getByCode(String code) {
+        return categoryProductMapper.toDto(categoryProductRepository.findByCode(code));
+    }
+
+    @Override
     public List<CategoryProductDTO> getAll() {
         return categoryProductMapper.toDto(categoryProductRepository.findAll());
     }

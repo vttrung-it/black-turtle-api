@@ -13,6 +13,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/category-product/")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class CategoryProductController {
 
     @Autowired
@@ -29,6 +30,11 @@ public class CategoryProductController {
     @GetMapping("find-by-id/{id}")
     public ResponseEntity<BaseResponse<CategoryProductDTO>> findById(@PathVariable Long id) {
         return ResponseEntity.ok(baseUtils.buildSuccessResponse(categoryProductService.getById(id)));
+    }
+
+    @GetMapping("find-by-code/{code}")
+    public ResponseEntity<BaseResponse<CategoryProductDTO>> findByCode(@PathVariable String code) {
+        return ResponseEntity.ok(baseUtils.buildSuccessResponse(categoryProductService.getByCode(code)));
     }
 
     @PostMapping("create-category-product")
