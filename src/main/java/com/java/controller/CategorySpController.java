@@ -13,7 +13,6 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/category-sp/")
-@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class CategorySpController {
 
     @Autowired

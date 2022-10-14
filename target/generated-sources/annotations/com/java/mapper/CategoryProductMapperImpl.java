@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2022-09-26T23:41:37+0700",
+    date = "2022-10-14T14:55:18+0700",
     comments = "version: 1.5.2.Final, compiler: javac, environment: Java 1.8.0_202 (Oracle Corporation)"
 )
 @Component
@@ -23,7 +23,6 @@ public class CategoryProductMapperImpl implements CategoryProductMapper {
 
         CategoryProduct categoryProduct = new CategoryProduct();
 
-        categoryProduct.setId( dto.getId() );
         categoryProduct.setName( dto.getName() );
         categoryProduct.setCode( dto.getCode() );
         categoryProduct.setBrandName( dto.getBrandName() );
@@ -42,7 +41,6 @@ public class CategoryProductMapperImpl implements CategoryProductMapper {
 
         CategoryProductDTO categoryProductDTO = new CategoryProductDTO();
 
-        categoryProductDTO.setId( entity.getId() );
         categoryProductDTO.setName( entity.getName() );
         categoryProductDTO.setCode( entity.getCode() );
         categoryProductDTO.setBrandName( entity.getBrandName() );

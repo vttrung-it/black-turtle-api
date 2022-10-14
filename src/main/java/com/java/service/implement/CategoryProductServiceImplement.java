@@ -28,11 +28,6 @@ public class CategoryProductServiceImplement implements CategoryProductService {
     }
 
     @Override
-    public CategoryProductDTO getById(Long id) {
-        return categoryProductMapper.toDto(categoryProductRepository.findByID(id));
-    }
-
-    @Override
     public CategoryProductDTO getByCode(String code) {
         return categoryProductMapper.toDto(categoryProductRepository.findByCode(code));
     }
@@ -45,28 +40,26 @@ public class CategoryProductServiceImplement implements CategoryProductService {
     @Override
     public CategoryProductDTO create(CategoryProductDTO categoryProductDTO) {
         CategoryProduct categoryProduct = categoryProductRepository.save(categoryProductMapper.toEntity(categoryProductDTO));
-        categoryProductDTO.setId(categoryProduct.getId());
-        return categoryProductDTO;
+        return categoryProductMapper.toDto(categoryProduct);
     }
 
     @Override
     public CategoryProductDTO edit(CategoryProductDTO categoryProductDTO) {
-        Optional<CategoryProduct> optional = categoryProductRepository.findById(categoryProductDTO.getId());
-        if (optional.isPresent()) {
-            CategoryProduct update = optional.get();
-            update.setName(categoryProductDTO.getName());
-            update.setCode(categoryProductDTO.getCode());
-            update.setBrandName(categoryProductDTO.getBrandName());
-            update.setOrigin(categoryProductDTO.getOrigin());
-            update.setAddress(categoryProductDTO.getAddress());
-            update.setDescription(categoryProductDTO.getDescription());
-            categoryProductRepository.save(update);
+        CategoryProduct categoryProduct = categoryProductRepository.findByCode(categoryProductDTO.getCode());
+        if (categoryProduct != null) {
+            categoryProduct.setName(categoryProductDTO.getName());
+            categoryProduct.setCode(categoryProductDTO.getCode());
+            categoryProduct.setBrandName(categoryProductDTO.getBrandName());
+            categoryProduct.setOrigin(categoryProductDTO.getOrigin());
+            categoryProduct.setAddress(categoryProductDTO.getAddress());
+            categoryProduct.setDescription(categoryProductDTO.getDescription());
+            categoryProductRepository.save(categoryProduct);
         }
-        return categoryProductMapper.toDto(categoryProductRepository.findByID(categoryProductDTO.getId()));
+        return categoryProductMapper.toDto(categoryProductRepository.findByCode(categoryProduct.getCode()));
     }
 
     @Override
-    public void delete(Long id) {
-        categoryProductRepository.findById(id).ifPresent(categoryProductRepository::delete);
+    public void delete(String code) {
+        categoryProductRepository.deleteCategoryProductByCode(code);
     }
 }

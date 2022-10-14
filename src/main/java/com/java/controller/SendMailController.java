@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/mail/")
-@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class SendMailController {
     @Autowired
     private SendMailService sendMailService;

@@ -13,7 +13,6 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/category-color/")
-@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class CategoryColorController {
 
     @Autowired

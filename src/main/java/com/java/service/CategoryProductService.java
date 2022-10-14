@@ -5,7 +5,6 @@ import com.java.domain.DTO.CategoryProductDTO;
 import java.util.List;
 
 public interface CategoryProductService {
-    CategoryProductDTO getById(Long id);
 
     CategoryProductDTO getByCode(String code);
 
@@ -15,5 +14,5 @@ public interface CategoryProductService {
 
     CategoryProductDTO edit(CategoryProductDTO categoryProductDTO);
 
-    void delete(Long id);
+    void delete(String code);
 }

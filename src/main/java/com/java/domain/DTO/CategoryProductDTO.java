@@ -2,7 +2,6 @@ package com.java.domain.DTO;
 
 public class CategoryProductDTO {
 
-    private Long id;
     private String name;
     private String code;
     private String brandName;
@@ -13,22 +12,13 @@ public class CategoryProductDTO {
     public CategoryProductDTO() {
     }
 
-    public CategoryProductDTO(Long id, String name, String code, String brandName, String origin, String address, String description) {
-        this.id = id;
+    public CategoryProductDTO(String name, String code, String brandName, String origin, String address, String description) {
         this.name = name;
         this.code = code;
         this.brandName = brandName;
         this.origin = origin;
         this.address = address;
         this.description = description;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public String getName() {

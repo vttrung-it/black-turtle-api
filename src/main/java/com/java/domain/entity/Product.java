@@ -18,36 +18,38 @@ public class Product {
     @Column(name = "code")
     private String code;
 
-    @NotNull
     @Size(max = 255)
     @Column(name = "name")
     private String name;
 
-    @NotNull
     @Size(max = 255)
     @Column(name = "image")
     private String image;
 
-    @NotNull
     @Size(max = 255)
     @Column(name = "rate")
     private String rate;
 
-    @NotNull
     @Size(max = 255)
     @Column(name = "description")
     private String description;
 
+    @NotNull
+    @Size(max = 255)
+    @Column(name = "code_category_product")
+    private String codeCategoryProduct;
+
     public Product() {
     }
 
-    public Product(Long id, String code, String name, String image, String rate, String description) {
+    public Product(Long id, String code, String name, String image, String rate, String description, String codeCategoryProduct) {
         this.id = id;
         this.code = code;
         this.name = name;
         this.image = image;
         this.rate = rate;
         this.description = description;
+        this.codeCategoryProduct = codeCategoryProduct;
     }
 
     public Long getId() {
@@ -98,6 +100,14 @@ public class Product {
         this.description = description;
     }
 
+    public String getCodeCategoryProduct() {
+        return codeCategoryProduct;
+    }
+
+    public void setCodeCategoryProduct(String codeCategoryProduct) {
+        this.codeCategoryProduct = codeCategoryProduct;
+    }
+
     @Override
     public String toString() {
         return "Product{" +
@@ -107,6 +117,7 @@ public class Product {
                 ", image='" + image + '\'' +
                 ", rate='" + rate + '\'' +
                 ", description='" + description + '\'' +
+                ", codeCategoryProduct='" + codeCategoryProduct + '\'' +
                 '}';
     }
 }
