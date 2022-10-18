@@ -1,9 +1,11 @@
 package com.java.controller;
 
 import com.java.domain.DTO.CategoryProductDTO;
+import com.java.domain.DTO.ProductDTO;
 import com.java.domain.base.BaseResponse;
 import com.java.domain.base.BaseUtils;
 import com.java.service.CategoryProductService;
+import com.java.service.ProductService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.v3.oas.annotations.parameters.RequestBody;
@@ -50,7 +52,6 @@ public class CategoryProductController {
     @ApiOperation("Xóa dòng sản phẩm bằng code")
     @DeleteMapping("delete-category-product/{code}")
     public ResponseEntity<BaseResponse<String>> deleteCategoryProduct(@PathVariable String code) {
-        categoryProductService.delete(code);
-        return ResponseEntity.ok(baseUtils.buildSuccessResponse("SUCCESS"));
+        return categoryProductService.delete(code);
     }
 }

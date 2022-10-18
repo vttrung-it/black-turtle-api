@@ -1,6 +1,8 @@
 package com.java.service;
 
 import com.java.domain.DTO.CategoryProductDTO;
+import com.java.domain.base.BaseResponse;
+import org.springframework.http.ResponseEntity;
 
 import java.util.List;
 
@@ -14,5 +16,5 @@ public interface CategoryProductService {
 
     CategoryProductDTO edit(CategoryProductDTO categoryProductDTO);
 
-    void delete(String code);
+    ResponseEntity<BaseResponse<String>> delete(String code);
 }

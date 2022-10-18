@@ -9,6 +9,8 @@ public interface ProductService {
 
     List<ProductDTO> getAll();
 
+    List<ProductDTO> getAllProductByCategoryProductCode(String categoryProductCode);
+
     ProductDTO create(ProductDTO productDTO);
 
     ProductDTO edit(ProductDTO productDTO);

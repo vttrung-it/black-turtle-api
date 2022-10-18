@@ -58,6 +58,14 @@ public class BaseUtils {
         return response;
     }
 
+    public <T> BaseResponse<T> buildErrorResponse(String message, T data) {
+        BaseResponse<T> response = new BaseResponse<>();
+        response.setCode(Constant.ERROR_CODE);
+        response.setMessage(message);
+        response.setData(data);
+        return response;
+    }
+
     public <T> BaseResponse<T> buildSuccessResponse(T data) {
         BaseResponse<T> response = new BaseResponse<>();
         response.setCode(Constant.SUCCESS_CODE);

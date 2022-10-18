@@ -34,6 +34,15 @@ public class ProductServiceImplement implements ProductService {
     }
 
     @Override
+    public List<ProductDTO> getAllProductByCategoryProductCode(String categoryProductCode) {
+        List<Product> productList = productRepository.findAllByCategoryProductCode(categoryProductCode);
+        if (productList != null && productList.size() > 0) {
+            return productMapper.toDto(productList);
+        }
+        return null;
+    }
+
+    @Override
     public ProductDTO create(ProductDTO productDTO) {
         Product product = productRepository.save(productMapper.toEntity(productDTO));
         return productMapper.toDto(product);

@@ -1,25 +1,31 @@
 package com.java.service.implement;
 
 import com.java.domain.DTO.CategoryProductDTO;
+import com.java.domain.DTO.ProductDTO;
+import com.java.domain.base.BaseResponse;
+import com.java.domain.base.BaseUtils;
 import com.java.domain.entity.CategoryProduct;
 import com.java.mapper.CategoryProductMapper;
 import com.java.repository.CategoryProductRepository;
 import com.java.service.CategoryProductService;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import com.java.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class CategoryProductServiceImplement implements CategoryProductService {
 
-    private final Logger logger = LoggerFactory.getLogger(CategoryProductServiceImplement.class);
-
     @Autowired
     private CategoryProductRepository categoryProductRepository;
+
+    @Autowired
+    private ProductService productService;
+
+    @Autowired
+    private BaseUtils baseUtils;
 
     private final CategoryProductMapper categoryProductMapper;
 
@@ -59,7 +65,16 @@ public class CategoryProductServiceImplement implements CategoryProductService {
     }
 
     @Override
-    public void delete(String code) {
-        categoryProductRepository.deleteCategoryProductByCode(code);
+    public ResponseEntity<BaseResponse<String>> delete(String code) {
+        List<ProductDTO> productDTOList = productService.getAllProductByCategoryProductCode(code);
+        if (productDTOList != null && productDTOList.size() > 0) {
+            return ResponseEntity.ok(baseUtils.buildErrorResponse("Tồn tại sản phẩm theo mã sản phẩm này", "ERROR"));
+        }
+        CategoryProduct categoryProductDTOList = categoryProductRepository.findByCode(code);
+        if (categoryProductDTOList != null) {
+            categoryProductRepository.deleteCategoryProductByCode(code);
+            return ResponseEntity.ok(baseUtils.buildSuccessResponse("SUCCESS"));
+        }
+        return ResponseEntity.ok(baseUtils.buildErrorResponse("Không tồn tại dòng sản phẩm này", "ERROR"));
     }
 }

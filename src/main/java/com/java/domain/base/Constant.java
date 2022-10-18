@@ -6,6 +6,7 @@ public class Constant {
     }
 
     public static final String SUCCESS_CODE = "200";
+    public static final String ERROR_CODE = "400";
     public static final String SUCCESS_MESSAGE = "success.message";
     public static final String LANG_VI = "vi";
     public static final String LANG_EN = "en";
